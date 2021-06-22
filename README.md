@@ -1,6 +1,4 @@
 # cablecam-OLVERA
-<<<<<<< HEAD
-=======
 
 This is a cable cam project made with:
 * Arduino nano
@@ -16,4 +14,4 @@ This is a cable cam project made with:
 * Servo motors to control zoom and focus
 * Telemetry module for temperature and voltage
 
->>>>>>> 383682c502767196327d832fd464ec86019937e7
+![alt text](https://github.com/olveragit/cablecam-OLVERA/blob/main/images/fritzing_diagram.jpg?raw=true)
