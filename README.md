@@ -14,5 +14,5 @@ This is a cable cam project made with:
 * Servo motors to control zoom and focus
 * Telemetry module for temperature and voltage
 
-![alt text](https://github.com/olveragit/cablecam-OLVERA/blob/main/images/fritzing_diagram.jpg?raw=true)
-![alt text](https://github.com/olveragit/cablecam-OLVERA/blob/main/images/chasis.svg?raw=true)
+![alt text](https://github.com/olveragit/cablecam-OLVERA/blob/main/fritzing-diagram/fritzing_diagram.jpg?raw=true)
+![alt text](https://github.com/olveragit/cablecam-OLVERA/blob/main/chasis/chasis.svg?raw=true)
