@@ -8,37 +8,40 @@
 //  
 //  AREA: INTERNET
 //  
-//  CARACTERISTICAS DEL PROYECTO:
-//    SLIDER PARA CAMARA CON MANDO DE RADIOFRECUENCIA PARA CONTROLAR:
+//  /////////////////////////////////////////////////////////////////
+//  
+//    RADIO FREQUENCY CABLE CAM
+//  
+//  CHARACTERISTICS:
 //    1. PAN
 //    2. TILT
 //    3. ZOOM
-//    4. VIEW
+//    4. ROLL
 //    5. FOCUS
-//    6. RIGHT W/SPEED
-//    7. LEFT W/SPEED
-//    8. TELEMETRY VOLTAGE
-//    9. RESET
+//    6. RIGHT W/ VARIABLE SPEED
+//    7. LEFT W/ VARIABLE SPEED
+//    8. TELEMETRY VOLTAGE AND TEMPERATURE
+//    9. RESET OPTION
 //  
-//  COMPONENTES:
+//  COMPONENTS:
 //    1. ARDUINO NANO
 //    2. MOTOR NEMA 17
-//    3. SENSORES ULTRASONICOS HCSR04
-//    4. EMISORA RF FLYSKY FS-I6
-//    5. RECEPTOR RF FLYSKY FS-IA10B
-//    6. BATERIAS LIPO 2S 1000MAH
-//    7. STEREN CAM-500
-//    8. SERVO MOTORES MAX ES08 MD II
-//    9. ESTABILIZADOR STORM32
+//    3. TWO ULTRASONIC SENSORS HCSR04
+//    4. TRANSMITTER RF FLYSKY FS-I6
+//    5. RECEIVER RF FLYSKY FS-IA10B
+//    6. LIPO BATTERIES 2S 1000MAH
+//    7. STEREN CAM-500 WITH ZOOM LENS
+//    8. TWO SERVOS MAX ES08 MD II (ZOOM AND FOCUS)
+//    9. GIMBAL STORM32
 //  
-//  FECHA: 21-MAYO-2021.
+//  LAST UPDATE: 21-MAYO-2021.
 //  
 //  /////////////////////////////////////////////////////////////////
 //  /////////////////////////////////////////////////////////////////
 
 
 
-// CONFIGURACION DEL DRIVER DEL MOTOR
+// MOTOR DRIVER CONFIGURATION
 #include <TMCStepper.h>
 #define DIR_PIN          7 // Direction
 #define STEP_PIN         8 // Step
@@ -51,7 +54,7 @@ TMC2209Stepper driver(SW_RX, SW_TX, R_SENSE, DRIVER_ADDRESS);
 
 
 
-// CONFIGURACION DE LOS SENSORES ULTRASONICOS HCSR04
+// HCSR04 CONFIG
 int periodo = 1000;
 unsigned long TiempoAhora = 0;
 
@@ -69,7 +72,7 @@ bool izq = true;
 
 
 
-// CONFIGURACION DEL RECEPTOR RF FSIA10B CHANNEL 1, PIN D2 INT
+// RECEIVER CONFIGURATION  FSIA10B CHANNEL 1, PIN D2 INT
 volatile int pwm_value = 0;
 volatile int delay_us = 0;
 volatile int prev_time = 0;
@@ -83,9 +86,9 @@ void setup() {
   digitalWrite(EN_PIN, LOW);
   driver.pdn_disable(1);  // Use PDN/UART pin for communication
   driver.I_scale_analog(0);
-  driver.rms_current(100); // Fijar corriente a 500mA
+  driver.rms_current(100); // Set current to 500mA
   driver.microsteps(1);
-  driver.toff(0x2); // Encender driver
+  driver.toff(0x2); // Turn on driver
   
   pinMode(TRIG_DER, OUTPUT);
   pinMode(ECO_DER, INPUT);
@@ -127,7 +130,7 @@ void setup() {
   Serial.println("8. SERVO MOTORES MAX ES08 MD II");
   Serial.println("9. ESTABILIZADOR STORM32");
   Serial.println("");
-  Serial.println("Ejecutando sketch CableCamOLVERA v1.01 -- 21-mayo-2021");
+  Serial.println("Ejecutando sketch cablecam-OLVERA v1.01 -- 21-mayo-2021");
   Serial.println("");
   Serial.println(" ////////////////////////////////////////////////////////////");
   Serial.println(" ////////////////////////////////////////////////////////////");
